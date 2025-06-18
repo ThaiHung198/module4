@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Settings</title>
+</head>
+<body>
+<h1>Settings</h1>
+<!-- th:object liên kết cả form với đối tượng 'settings' từ Controller -->
+<form th:action="@{/updateSettings}" th:object="${settings}" method="post">
+  <table>
+    <tr>
+      <td>Languages:</td>
+      <td>
+        <!-- th:field tự động bind với thuộc tính 'language' -->
+        <select th:field="*{language}">
+          <option th:each="lang : ${languages}" th:value="${lang}" th:text="${lang}"></option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>Page Size:</td>
+      <td>
+        Show
+        <!-- th:field tự động bind với thuộc tính 'pageSize' -->
+        <select th:field="*{pageSize}">
+          <option th:each="size : ${pageSizes}" th:value="${size}" th:text="${size}"></option>
+        </select>
+        emails per page
+      </td>
+    </tr>
+    <tr>
+      <td>Spams filter:</td>
+      <td>
+        <!-- th:field tự động bind với thuộc tính 'spamsFilter' -->
+        <input type="checkbox" th:field="*{spamsFilter}" /> Enable spams filter
+      </td>
+    </tr>
+    <tr>
+      <td>Signature:</td>
+      <td>
+        <!-- th:field tự động bind với thuộc tính 'signature' -->
+        <textarea rows="4" cols="50" th:field="*{signature}"></textarea>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <button type="submit">Update</button>
+        <button type="button">Cancel</button>
+      </td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>
