@@ -23,13 +23,13 @@ public class CustomerController {
     public String index(Model model) {
         List<Customer> customerList = customerService.findAll();
         model.addAttribute("customers", customerList);
-        return "/index";
+        return "index";
     }
 
     @GetMapping("/create")
     public String create(Model model) {
         model.addAttribute("customer", new Customer());
-        return "/create";
+        return "create";
     }
 
     @PostMapping("/save")
@@ -41,7 +41,7 @@ public class CustomerController {
     @GetMapping("/{id}/edit")
     public String update(@PathVariable Long id, Model model) {
         model.addAttribute("customer", customerService.findById(id));
-        return "/update";
+        return "update";
     }
 
     @PostMapping("/update")
@@ -53,7 +53,7 @@ public class CustomerController {
     @GetMapping("/{id}/delete")
     public String delete(@PathVariable Long id, Model model) {
         model.addAttribute("customer", customerService.findById(id));
-        return "/delete";
+        return "delete";
     }
 
     @PostMapping("/delete")
@@ -66,6 +66,6 @@ public class CustomerController {
     @GetMapping("/{id}/view")
     public String view(@PathVariable Long id, Model model) {
         model.addAttribute("customer", customerService.findById(id));
-        return "/view";
+        return "view";
     }
 }
