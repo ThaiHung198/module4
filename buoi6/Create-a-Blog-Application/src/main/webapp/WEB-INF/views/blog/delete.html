@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Xóa Blog</title>
+</head>
+<body>
+<h1>Xóa bài blog</h1>
+<h2>Bạn có chắc chắn muốn xóa bài viết này không?</h2>
+<p><a href="/blogs">Quay lại danh sách</a></p>
+<form th:action="@{/blogs/delete}" method="post">
+  <input type="hidden" name="id" th:value="${blog.id}"/>
+  <h3 th:text="${blog.title}"></h3>
+  <input type="submit" value="Xóa">
+</form>
+</body>
+</html>
