@@ -5,6 +5,9 @@ import com.codegym.model.Province;
 import com.codegym.service.ICustomerService;
 import com.codegym.service.IProvinceService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -26,13 +29,34 @@ public class CustomerController {
         return provinceService.findAll();
     }
 
-    @GetMapping
-    public ModelAndView listCustomer() {
+    @GetMapping("")
+    public ModelAndView listCustomers(@PageableDefault(value = 5) Pageable pageable) {
+        Page<Customer> customers = customerService.findAll(pageable);
         ModelAndView modelAndView = new ModelAndView("/customer/list");
-        Iterable<Customer> customers = customerService.findAll();
         modelAndView.addObject("customers", customers);
         return modelAndView;
     }
+@GetMapping("/search")
+    public ModelAndView listCustomersSearch(@RequestParam("search") Optional<String> search, Pageable pageable) {
+        Page<Customer> customers;
+        if (search.isPresent()) {
+            customers = customerService.findAllByNameContaining(pageable, search.get());
+        } else {
+            customers = customerService.findAll(pageable);
+        }
+        ModelAndView modelAndView = new ModelAndView("/customer/list");
+        modelAndView.addObject("customers", customers);
+        return modelAndView;
+    }
+
+
+//    @GetMapping
+//    public ModelAndView listCustomer() {
+//        ModelAndView modelAndView = new ModelAndView("/customer/list");
+//        Iterable<Customer> customers = customerService.findAll();
+//        modelAndView.addObject("customers", customers);
+//        return modelAndView;
+//    }
 
     @GetMapping("/create")
     public ModelAndView createForm() {
@@ -76,4 +100,5 @@ public class CustomerController {
         redirect.addFlashAttribute("message", "Delete customer successfully");
         return "redirect:/customers";
     }
+
 }
