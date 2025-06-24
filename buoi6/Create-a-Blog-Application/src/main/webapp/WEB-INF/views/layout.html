@@ -1,36 +1,27 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+  <!--<!DOCTYPE html>-->
+  <!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
 
-<!--&lt;!&ndash; Fragment chứa CSS và các thẻ head chung &ndash;&gt;-->
-<!--<head th:fragment="head(title)">-->
-<!--  <meta charset="UTF-8">-->
-<!--  <title th:text="${title}">Tiêu đề mặc định</title>-->
-<!--  <style>-->
-<!--    body { font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 20px; }-->
-<!--    .container { max-width: 900px; margin: auto; background: #fff; padding: 20px 30px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }-->
-<!--    h1, h2 { color: #333; }-->
-<!--    table { width: 100%; border-collapse: collapse; margin-top: 20px; }-->
-<!--    th, td { padding: 12px; border: 1px solid #ddd; text-align: left; }-->
-<!--    thead { background-color: #007bff; color: white; }-->
-<!--    tr:nth-child(even) { background-color: #f2f2f2; }-->
-<!--    .btn { display: inline-block; padding: 6px 12px; margin-bottom: 0; font-size: 14px; font-weight: 400; text-align: center; cursor: pointer; border: 1px solid transparent; border-radius: 4px; text-decoration: none; }-->
-<!--    .btn-create { background-color: #28a745; color: white; margin-bottom: 15px; }-->
-<!--    .btn-view { background-color: #17a2b8; color: white; }-->
-<!--    .btn-edit { background-color: #ffc107; color: black; }-->
-<!--    .btn-delete { background-color: #dc3545; color: white; }-->
-<!--    label { display: block; margin-top: 15px; font-weight: bold; }-->
-<!--    input[type=text], textarea { width: 100%; padding: 8px; margin-top: 5px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }-->
-<!--    input[type=submit] { background-color: #007bff; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; margin-top: 20px; }-->
-<!--    .back-link { text-decoration: none; color: #007bff; display: inline-block; margin-bottom: 15px; }-->
-<!--    .content { line-height: 1.6; }-->
-<!--    footer { text-align: center; margin-top: 30px; color: #777; border-top: 1px solid #eee; padding-top: 15px;}-->
-<!--  </style>-->
-<!--</head>-->
+  <!--&lt;!&ndash; Đây là fragment chứa toàn bộ CSS chung &ndash;&gt;-->
+  <!--<head th:fragment="css(pageTitle)">-->
+  <!--  <meta charset="UTF-8">-->
+  <!--  <title th:text="${pageTitle}">Ứng dụng Blog</title>-->
+  <!--  <style>-->
+  <!--    body { font-family: sans-serif; background-color: #f4f4f9; color: #333; margin: 0; padding: 20px; }-->
+  <!--    .container { max-width: 800px; margin: auto; background: white; padding: 25px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }-->
+  <!--    h1 { color: #0056b3; }-->
+  <!--    table { width: 100%; border-collapse: collapse; margin-top: 20px; }-->
+  <!--    th, td { padding: 10px; border: 1px solid #ddd; text-align: left; }-->
+  <!--    thead { background-color: #007bff; color: white; }-->
+  <!--    a { text-decoration: none; color: #007bff; }-->
+  <!--    .btn { display: inline-block; padding: 8px 15px; border-radius: 4px; color: white; text-align: center; }-->
+  <!--    .btn-create { background-color: #28a745; margin-bottom: 15px; }-->
+  <!--    .btn-edit { background-color: #ffc107; color: #212529; }-->
+  <!--    .btn-delete { background-color: #dc3545; }-->
+  <!--    form { margin-top: 15px; }-->
+  <!--    label { display: block; margin-top: 10px; font-weight: bold; }-->
+  <!--    input[type=text], textarea { width: 100%; padding: 8px; margin-top: 5px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }-->
+  <!--    input[type=submit] { background-color: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; margin-top: 20px; }-->
+  <!--  </style>-->
+  <!--</head>-->
 
-<!--<body>-->
-<!--&lt;!&ndash; Fragment footer chung &ndash;&gt;-->
-<!--<footer th:fragment="footer">-->
-<!--  <p>© 2025 - Blog Application by CodeGym</p>-->
-<!--</footer>-->
-<!--</body>-->
-<!--</html>-->
+  <!--</html>-->
