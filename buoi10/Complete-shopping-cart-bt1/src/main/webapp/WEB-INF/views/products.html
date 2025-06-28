@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Danh sách Sản phẩm</title>
+    <style>body {font-family: sans-serif; margin: 2em;} table {width: 100%; border-collapse: collapse;} th, td {border: 1px solid #ccc; padding: 8px;} a {text-decoration: none;}</style>
+</head>
+<body>
+<h1>Danh sách sản phẩm</h1>
+<p><a th:href="@{/cart}">Xem giỏ hàng</a></p>
+<table>
+    <thead>
+    <tr>
+        <th>Tên sản phẩm</th>
+        <th>Giá</th>
+        <th>Hành động</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Dùng th:each để lặp qua danh sách sản phẩm -->
+    <tr th:each="product : ${products}">
+        <td th:text="${product.name}">Tên SP</td>
+        <td th:text="${#numbers.formatDecimal(product.price, 0, 'COMMA', 0, 'POINT')} + ' VNĐ'">Giá</td>
+        <td>
+            <!-- Link để thêm sản phẩm vào giỏ -->
+            <a th:href="@{/cart/add/{id}(id=${product.id})}">Thêm vào giỏ</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

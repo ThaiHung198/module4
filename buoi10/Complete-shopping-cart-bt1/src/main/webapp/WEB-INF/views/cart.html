@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Giỏ hàng</title>
+  <style>body {font-family: sans-serif; margin: 2em;} table {width: 100%; border-collapse: collapse;} th, td {border: 1px solid #ccc; padding: 8px;} a {text-decoration: none;} .total {font-size: 1.2em; font-weight: bold; margin-top: 1em;}</style>
+</head>
+<body>
+<h1>Giỏ hàng của bạn</h1>
+<a th:href="@{/products}">Tiếp tục mua sắm</a>
+
+<!-- Kiểm tra xem giỏ hàng có rỗng không -->
+<div th:if="${cart.items.isEmpty()}">
+  <p>Giỏ hàng của bạn đang trống.</p>
+</div>
+
+<div th:if="${!cart.items.isEmpty()}">
+  <form th:action="@{/cart/update}" method="post">
+    <table>
+      <thead>
+      <tr>
+        <th>Tên sản phẩm</th>
+        <th>Giá</th>
+        <th>Số lượng</th>
+        <th>Thành tiền</th>
+      </tr>
+      </thead>
+      <tbody>
+      <!-- Lặp qua các món hàng trong giỏ -->
+      <tr th:each="item : ${cart.items.values()}">
+        <td th:text="${item.product.name}">Tên SP</td>
+        <td th:text="${#numbers.formatDecimal(item.product.price, 0, 'COMMA', 0, 'POINT')} + ' VNĐ'">Giá</td>
+        <td>
+          <!-- GIẢI THÍCH (TOPIC 4: DATA BINDING & FORM) -->
+          <!-- Input để người dùng thay đổi số lượng. -->
+          <!-- "name" của input phải khớp với @RequestParam trong controller -->
+          <input type="hidden" name="productId" th:value="${item.product.id}" />
+          <input type="number" name="quantity" th:value="${item.quantity}" min="0" style="width: 50px;" onchange="this.form.submit()"/>
+        </td>
+        <td th:text="${#numbers.formatDecimal(item.subtotal, 0, 'COMMA', 0, 'POINT')} + ' VNĐ'">Thành tiền</td>
+      </tr>
+      </tbody>
+    </table>
+  </form>
+  <p class="total">Tổng cộng: <span th:text="${#numbers.formatDecimal(cart.totalPrice, 0, 'COMMA', 0, 'POINT')} + ' VNĐ'"></span></p>
+  <a th:href="@{/cart/checkout}" style="padding: 10px 15px; background-color: green; color: white; border-radius: 5px;">Thanh toán</a>
+</div>
+</body>
+</html>
