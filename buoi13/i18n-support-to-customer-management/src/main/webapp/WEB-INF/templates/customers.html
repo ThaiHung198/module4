@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+  <title th:text="#{page.title}"></title>
+</head>
+<body>
+<div class="lang-switcher">
+  Language: <a href="?lang=en">English</a> | <a href="?lang=vi">Vietnamese</a>
+</div>
+<h1 th:text="#{customer.list.header}"></h1>
+<table>
+<thead>
+<tr>
+  <th th:text="#{customer.name}"></th>
+  <th th:text="#{customer.email}"></th>
+</tr>
+</thead>
+<tbody>
+<tr th:each="customer : ${customers}">
+  <td th:text="${customer.name}"></td>
+  <td th:text="${customer.email}"></td>
+</tr>
+</tbody>
+</table>
+
+</body>
+</html>
