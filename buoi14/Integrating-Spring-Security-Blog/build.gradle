@@ -25,6 +25,12 @@ dependencies {
     compileOnly('javax.servlet:javax.servlet-api:4.0.1')
 
     implementation group: 'org.springframework', name: 'spring-webmvc', version: '5.3.23'
+    implementation group: 'org.springframework.security', name: 'spring-security-web', version: '5.7.5'
+    implementation group: 'org.springframework.security', name: 'spring-security-config', version: '5.7.5'
+
+    // Tích hợp Spring Security với Thymeleaf
+    // Phiên bản 3.1.2 tương thích tốt với Thymeleaf 3.1.1 của bạn
+    implementation group: 'org.thymeleaf.extras', name: 'thymeleaf-extras-springsecurity5', version: '3.1.2.RELEASE'
 
 
     implementation group: 'org.thymeleaf', name: 'thymeleaf-spring5', version: '3.1.1.RELEASE'
