@@ -1,4 +1,3 @@
-
 package com.codegym.configuration;
 
 import org.springframework.web.filter.CharacterEncodingFilter;

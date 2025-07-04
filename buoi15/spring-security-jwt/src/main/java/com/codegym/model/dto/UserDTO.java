@@ -1,16 +1,18 @@
 package com.codegym.model.dto;
 
+import com.codegym.model.Role;
+
 import java.util.Set;
 
 public class UserDTO {
     private Long id;
     private String name;
-    private Set<String> roles;
+    private Set<Role> roles;
 
     public UserDTO() {
     }
 
-    public UserDTO(Long id, String name, Set<String> roles) {
+    public UserDTO(Long id, String name, Set<Role> roles) {
         this.id = id;
         this.name = name;
         this.roles = roles;
@@ -32,11 +34,11 @@ public class UserDTO {
         this.name = name;
     }
 
-    public Set<String> getRoles() {
+    public Set<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(Set<String> roles) {
+    public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
 }
